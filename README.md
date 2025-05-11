@@ -1,78 +1,89 @@
+# 🐾 Cute Diffusion Model Project
 
-# 🐍 Diffusion Model Playground 
+This project is a modular implementation of a diffusion model for generating images. It's organized into a clean API structure to support easy use, training, and extension.
 
-Welcome to the **Diffusion Model Modular API** – a cuddly and clean PyTorch-based implementation of a Denoising Diffusion Probabilistic Model (DDPM)! This repo is designed with modularity and clarity in mind, making it perfect for learning, experimenting, and extending 🧪✨.
+## ✨ Features
 
----
+* Modular API for training and sampling
+* Configurable parameters
+* Easy to plug in your own dataset
 
-## 🧠 What is a Diffusion Model?
+## 🔧 Installation
 
-Diffusion models are a class of generative models that learn to create new data by reversing a noising process. Here's how it works in simple terms:
+1. Clone the repository:
 
-1. **Forward Process (Noise In)** 🌫️: Gradually add Gaussian noise to a real image over many steps until it becomes pure noise.
-2. **Reverse Process (Denoise Out)** 🌈: Train a neural network to reverse this process step-by-step, turning the noise back into a beautiful image!
+   ```bash
+   git clone https://github.com/your-username/cute-diffusion.git
+   cd cute-diffusion
+   ```
 
-These models are popular because they can generate **high-quality, diverse images**, and have been used in state-of-the-art tools like **DALL·E 2** and **Stable Diffusion**.
+2. Install the required packages:
 
----
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## 🧩 Project Structure
+## 🐱 Dataset Setup
 
-```
-diffusion_model_modular/
-├── configs/
-│   └── default_config.py      # 🛠️ Configuration settings (image size, channels, timesteps, etc.)
-├── models/
-│   └── unet.py                # 🧠 A simple UNet architecture used for denoising
-├── diffusion/
-│   └── gaussian_diffusion.py # 🔁 The core diffusion logic (forward + reverse processes)
-├── utils/
-│   └── utils.py               # 🧰 Helper functions (e.g., beta schedules, image saving)
-├── main.py                    # 🚀 Training entry point
-└── README.md                  # 📖 You're reading it!
-```
+To use the model with your custom dataset (e.g., cat images):
 
----
+1. **Download the dataset archive**
+   Download [`cat.rar`](#) (provide a real link here if hosted elsewhere).
 
-## 🚀 Getting Started
+2. **Extract the archive**
+   Unzip or extract `cat.rar` to the project directory. After extraction, you should have a folder structure like:
 
-1. Clone the repo:
+   ```
+   your_project/
+   ├── cat/
+   │   ├── image1.jpg
+   │   ├── image2.jpg
+   │   └── ...
+   ```
+
+3. **Use the dataset path**
+   In your script or config, make sure to point to the correct dataset directory:
+
+   ```python
+   dataset_path = "cat"
+   ```
+
+## 🚀 Usage
+
+Train the model:
 
 ```bash
-git clone https://github.com/AAliAhmadi/diffusion-model-modular.git
-cd diffusion-model-modular
+python train.py --data-dir cat --epochs 100
 ```
 
-2. Install requirements:
+Generate images:
 
 ```bash
-pip install -r requirements.txt
+python sample.py --output-dir samples/
 ```
 
-3. Train your model:
+## 🧠 How Diffusion Models Work (Short Summary)
 
-```bash
-python main.py
+Diffusion models are generative models that learn to reverse a gradual noising process. Starting from pure noise, the model learns to reconstruct data (e.g., images) by iteratively denoising it. It consists of:
+
+1. **Forward Process**: Gradually add Gaussian noise to input data over many time steps.
+2. **Reverse Process**: Train a neural network to predict and remove the noise at each step.
+3. **Sampling**: Start with noise and apply the reverse process to generate realistic samples.
+
+These models have been shown to produce high-quality, diverse images.
+
+## 📁 Structure
+
+```
+├── data/            # Data loaders and preprocessing
+├── model/           # Diffusion model components
+├── train.py         # Training script
+├── sample.py        # Sampling script
+├── utils.py         # Utility functions
+├── requirements.txt # Dependencies
+├── README.md        # Project overview
 ```
 
-You can change parameters in `configs/default_config.py` to adjust image size, diffusion steps, and more.
+## ❤️ Credits
 
----
-
-## 🖼️ Output Samples
-
-After training, generated samples will be saved to the `samples/` directory. Enjoy watching your model create magic from noise! ✨🎨
-
----
-
-## 💌 Credits
-
-This project was built with love using PyTorch 🐍❤️ and inspired by the fantastic work in the diffusion model research community.
-
----
-
-## 📬 Questions or Ideas?
-
-Feel free to open issues or reach out with suggestions! Let's make this project even more awesome together 🧸🌟.
-
-Happy Generating! 🐰🎈
+Developed with love for learning and experimentation.
