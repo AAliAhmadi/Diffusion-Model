@@ -34,6 +34,7 @@ To use the model with your custom dataset (e.g., cat images):
 
    ```
    your_project/
+   data/
    ├── cat/
    ├── cat/
    │   ├── image1.jpg
