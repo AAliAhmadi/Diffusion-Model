@@ -35,7 +35,7 @@ class Block(nn.Module):
         h = self.bnorm(self.relu(self.conv2(h)))
         return self.transform(h)
 
-class SimpleUNet(nn.Module):
+class UNet(nn.Module):
     def __init__(self, time_emb_dim=32):
         super().__init__()
         image_channels = 3
