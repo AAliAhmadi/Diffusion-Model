@@ -13,7 +13,7 @@ This project is a modular implementation of a diffusion model for generating ima
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/AAliAhmadi/cute-diffusion.git
+   git clone https://github.com/AAliAhmadi/Diffusion-Model.git
    cd cute-diffusion
    ```
 
