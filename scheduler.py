@@ -35,6 +35,34 @@ class DiffusionScheduler:
         
         return sqrt_alphas_cumprod_t * x_0 + sqrt_one_minus_alphas_cumprod_t * noise
 
+    @torch.no_grad()
     def sample(self, model, shape, device, denoise_fn=None):
-        # The sampling method should use the denoise_fn to reverse the diffusion process
-        pass
+        x = torch.randn(shape, device=device)  # Start from Gaussian noise
+    
+        for t in reversed(range(self.timesteps)):
+            t_batch = torch.full((shape[0],), t, device=device, dtype=torch.long)
+            beta_t = self.schedule["betas"][t]
+            sqrt_one_minus_alphas_cumprod_t = self.schedule["sqrt_one_minus_alphas_cumprod"][t]
+            sqrt_recip_alphas_t = self.schedule["sqrt_recip_alphas"][t]
+    
+            # Predict noise
+            eps_theta = model(x, t_batch)
+    
+            # Compute x0 prediction
+            x0_pred = (x - sqrt_one_minus_alphas_cumprod_t * eps_theta) / sqrt_recip_alphas_t
+    
+            if t > 0:
+                noise = torch.randn_like(x)
+            else:
+                noise = torch.zeros_like(x)
+    
+            posterior_var = self.schedule["posterior_variance"][t]
+            mean = (
+                self.schedule["sqrt_alphas_cumprod"][t] * x0_pred
+                + sqrt_one_minus_alphas_cumprod_t * noise
+            )
+    
+            x = mean + torch.sqrt(posterior_var) * noise
+    
+        return x
+
