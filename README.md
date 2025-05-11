@@ -30,10 +30,11 @@ To use the model with your custom dataset (e.g., cat images):
    Download [`cat.rar`](#) (provide a real link here if hosted elsewhere).
 
 2. **Extract the archive**
-   Unzip or extract `cat.rar` to the project directory. After extraction, you should have a folder structure like:
+   Unzip or extract `cat.rar` to the project directory. After extraction, you should have or create a folder structure like:
 
    ```
    your_project/
+   ├── cat/
    ├── cat/
    │   ├── image1.jpg
    │   ├── image2.jpg
@@ -44,7 +45,7 @@ To use the model with your custom dataset (e.g., cat images):
    In your script or config, make sure to point to the correct dataset directory:
 
    ```python
-   dataset_path = "cat"
+   dataset_path = "./data/cat/"
    ```
 
 ## 🚀 Usage
