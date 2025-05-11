@@ -39,7 +39,7 @@ diffusion_model_modular/
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/yourusername/diffusion-model-modular.git
+git clone https://github.com/AAliAhmadi/diffusion-model-modular.git
 cd diffusion-model-modular
 ```
 
