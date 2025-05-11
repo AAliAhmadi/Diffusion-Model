@@ -14,7 +14,6 @@ This project is a modular implementation of a diffusion model for generating ima
 
    ```bash
    git clone https://github.com/AAliAhmadi/Diffusion-Model.git
-   cd cute-diffusion
    ```
 
 2. Install the required packages:
