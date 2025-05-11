@@ -1,5 +1,5 @@
 
-# 🌸 Diffusion Model Playground 🌸
+# 🐍 Diffusion Model Playground 
 
 Welcome to the **Diffusion Model Modular API** – a cuddly and clean PyTorch-based implementation of a Denoising Diffusion Probabilistic Model (DDPM)! This repo is designed with modularity and clarity in mind, making it perfect for learning, experimenting, and extending 🧪✨.
 
